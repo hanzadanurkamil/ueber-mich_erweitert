@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khanzada Nurkamil kyzy - Über mich</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1em 0;
+            text-align: center;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            background-color: #444;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 14px 20px;
+            display: block;
+        }
+        nav ul li a:hover {
+            background-color: #555;
+        }
+        section {
+            padding: 20px;
+        }
+        .hidden {
+            display: none;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .gallery {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .gallery img {
+            max-width: 100%;
+            height: auto;
+            margin: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .hero img {
+            width: 100%;
+            height: auto;
+            max-height: 400px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Khanzada Nurkamil kyzy</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#" onclick="showPage('home')">Home</a></li>
+            <li><a href="#" onclick="showPage('about')">Über mich</a></li>
+            <li><a href="#" onclick="showPage('hobbies')">Hobbys</a></li>
+            <li><a href="#" onclick="showPage('languages')">Sprachen</a></li>
+            <li><a href="#" onclick="showPage('gallery')">Galerie</a></li>
+            <li><a href="#" onclick="showPage('contact')">Kontakt</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <section id="home">
+            <div class="hero">
+                <img src="IMG_2970.JPG" alt="Bild für Startseite">
+            </div>
+            <h2>Willkommen</h2>
+            <p>Willkommen auf meiner persönlichen Website! Hier erfahren Sie mehr über mich, meine Hobbys und meine Sprachkenntnisse.</p>
+        </section>
+        <section id="about" class="hidden">
+            <h2>Über mich</h2>
+            <p>Ich heiße Khanzada Nurkamil kyzy und komme aus Bishkek, Kirgistan. Ich bin duale Studentin an der DHBW Lörrach und bei Sopra Steria SE angestellt. In meiner Freizeit lese, koche und tanze ich gerne. Ich lebe seit zwei Jahren in Deutschland und bin für mein duales Studium hierher gezogen. Zuvor habe ich in Bishkek Filologie studiert und mein Studium 2020 abgeschlossen.</p>
+        </section>
+        <section id="hobbies" class="hidden">
+            <h2>Hobbys</h2>
+            <ul>
+                <li>Lesen</li>
+                <li>Kochen</li>
+                <li>Tanzen</li>
+            </ul>
+        </section>
+        <section id="languages" class="hidden">
+            <h2>Sprachen</h2>
+            <p>Ich spreche fünf Sprachen: Kirgisisch, Russisch, Türkisch, Deutsch und Englisch. An meinem Deutsch und Englisch arbeite ich weiterhin, um sie zu verbessern.</p>
+        </section>
+        <section id="gallery" class="hidden">
+            <h2>Galerie</h2>
+            <div class="gallery">
+                <img src="IMG_1.jpg.jpg" alt="Bild 1">
+                <img src="IMG_2.jpg.jpg" alt="Bild 2">
+                <img src="IMG_0725.jpg" alt="Bild 3">
+            </div>
+        </section>
+        <section id="contact" class="hidden">
+            <h2>Kontakt</h2>
+            <form id="contactForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required><br><br>
+                <label for="email">E-Mail:</label>
+                <input type="email" id="email" name="email" required><br><br>
+                <label for="message">Nachricht:</label><br>
+                <textarea id="message" name="message" required></textarea><br><br>
+                <button type="submit">Senden</button>
+            </form>
+            <p id="formResponse" class="hidden"></p>
+        </section>
+    </div>
+    <script>
+        function showPage(pageId) {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                section.classList.add('hidden');
+            });
+            document.getElementById(pageId).classList.remove('hidden');
+        }
+
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            document.getElementById('formResponse').textContent = `Danke, ${name}! Ihre Nachricht wurde gesendet.`;
+            document.getElementById('formResponse').classList.remove('hidden');
+
+            document.getElementById('contactForm').reset();
+        });
+    </script>
+</body>
+</html>
